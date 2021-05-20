@@ -1,0 +1,793 @@
+{
+	"info": {
+		"_postman_id": "370ebcdc-c52f-4ab1-aa1d-0ab8f36c423a",
+		"name": "Congelo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "SocialAuth",
+					"item": [
+						{
+							"name": "Get Social Providers",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Encoding",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{apiUrl}}/social",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"social"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Authorize Via Social Provider",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Encoding",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/social/{{slug}}",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"social",
+										"{{slug}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detach Social Provider",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept-Encoding",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/social/{{slug}}/detach",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"social",
+										"{{slug}}",
+										"detach"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "{{first_name}}",
+									"description": "Required. String",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "{{last_name}}",
+									"description": "Required. String",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"description": "Required. String Email",
+									"type": "text"
+								},
+								{
+									"key": "department",
+									"value": "{{department}}",
+									"description": "Optional field. String",
+									"type": "text"
+								},
+								{
+									"key": "university",
+									"value": "{{university}}",
+									"description": "Optional field. String",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "{{role}}",
+									"description": "available value (student, tutor)",
+									"type": "text"
+								},
+								{
+									"key": "grade_level",
+									"value": "{{gender_level}}",
+									"description": "Optional field. String",
+									"type": "text"
+								},
+								{
+									"key": "latest_grade",
+									"description": "Optional field. File available type (png,jpg,jpeg,doc,docx,pdf)",
+									"type": "file",
+									"src": "/D:/projects/wishapp/public/images/samsung-galaxy-S9.png"
+								},
+								{
+									"key": "speciality",
+									"value": "{{speciality}}",
+									"description": "Optional field. String",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "{{password}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/register",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{userEmail}}",
+									"description": "Required. String type: email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{userPassword}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								},
+								{
+									"key": "remember",
+									"value": "{{authRemember}}",
+									"description": "optional param",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/login",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{apiUrl}}/logout",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send Password Reset Link",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{userEmail}}",
+									"description": "Required. String Email",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/password/email",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"password",
+								"email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{userEmail}}",
+									"description": "Required. String Email",
+									"type": "text"
+								},
+								{
+									"key": "token",
+									"value": "{{passwordResetToken}}",
+									"description": "Password reset token sent via email link.",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{userPassword}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "{{userPassword}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/password/reset",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Step One",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"description": "Required. String Email",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "{{password}}",
+									"description": "Required. String Length between 8-32",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/register-step-one",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"register-step-one"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Me",
+			"item": [
+				{
+					"name": "Show Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{apiUrl}}/me",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "{{first_name}}",
+									"description": "Optional field. String",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "{{last_name}}",
+									"description": "Optional field. String",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "{{email}}",
+									"description": "Optional field. String Email",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "department",
+									"value": "{{department}}",
+									"description": "Optional field. String",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "university",
+									"value": "{{university}}",
+									"description": "Optional field. String",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "gender_level",
+									"value": "{{gender_level}}",
+									"description": "Optional field. String",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "role",
+									"value": "{{role}}",
+									"description": "available value (student, tutor)",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"description": "Optional field. String Length between 8-32",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password_confirmation",
+									"value": "{{password}}",
+									"description": "Optional field. String Length between 8-32",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "latest_grade",
+									"description": "Optional field. File available type (png,jpg,jpeg,doc,docx,pdf)",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "university",
+									"value": "",
+									"description": "Optional field. String Max:255",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/me",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|2HNaoSSKCZHc5W35RBNj1p5kvRj7UKMgevo86BRt",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"description": "Optional field. File available type (png,jpg,jpeg)",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/avatar",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Avatar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|2HNaoSSKCZHc5W35RBNj1p5kvRj7UKMgevo86BRt",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{apiUrl}}/avatar",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Questions",
+			"item": [
+				{
+					"name": "Topics",
+					"item": [
+						{
+							"name": "Get Topics (List)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{apiUrl}}/question-topics",
+									"host": [
+										"{{apiUrl}}"
+									],
+									"path": [
+										"question-topics"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create Request",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "1|7laFGwzviVzhdT6mNSrkq1JAMtQJ7sCsQzsLh8xr",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "question",
+									"value": "{{question}}",
+									"description": "Required. Max length 255",
+									"type": "text"
+								},
+								{
+									"key": "question_topic_id",
+									"value": "{{questionTopicId}}",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"description": "Optional field. File available type (png,jpg,jpeg,doc,docx,pdf)",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiUrl}}/questions",
+							"host": [
+								"{{apiUrl}}"
+							],
+							"path": [
+								"questions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "http://starter-mobile.test/api",
+			"type": "string"
+		},
+		{
+			"key": "url",
+			"value": "http://starter-mobile.test",
+			"type": "string"
+		},
+		{
+			"key": "userName",
+			"value": "Test User",
+			"type": "string"
+		},
+		{
+			"key": "userEmail",
+			"value": "test-user@gmail.com",
+			"type": "string"
+		},
+		{
+			"key": "userPassword",
+			"value": "secret123",
+			"type": "string"
+		},
+		{
+			"key": "authRemember",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "passwordResetToken",
+			"value": "valid token",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "slug",
+			"value": "github",
+			"type": "string"
+		}
+	]
+}
